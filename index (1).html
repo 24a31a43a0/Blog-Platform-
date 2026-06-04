@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Quill — Blog Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">The <span>Quill</span></div>
+  <nav>
+    <a href="#">Discover</a>
+    <a href="#">Archive</a>
+    <a href="#">About</a>
+  </nav>
+  <button class="write-btn" onclick="document.getElementById('titleInput').focus()">Write</button>
+</header>
+
+<div class="hero-bar">
+  <button class="tag-pill active" onclick="filterTag(this,'all')">All Stories</button>
+  <button class="tag-pill" onclick="filterTag(this,'technology')">Technology</button>
+  <button class="tag-pill" onclick="filterTag(this,'culture')">Culture</button>
+  <button class="tag-pill" onclick="filterTag(this,'science')">Science</button>
+  <button class="tag-pill" onclick="filterTag(this,'travel')">Travel</button>
+  <button class="tag-pill" onclick="filterTag(this,'opinion')">Opinion</button>
+  <button class="tag-pill" onclick="filterTag(this,'life')">Life</button>
+</div>
+
+<div class="main-layout">
+  <div>
+    <!-- COMPOSE -->
+    <div class="compose-card">
+      <div class="compose-header">New Story</div>
+      <div class="compose-body">
+        <input type="text" id="titleInput" placeholder="Your headline here…">
+        <input type="text" class="tag-input" id="tagInput" placeholder="Tag (e.g. Technology, Culture, Travel)">
+        <textarea id="contentInput" placeholder="Tell your story…" oninput="updateWordCount()"></textarea>
+      </div>
+      <div class="compose-footer">
+        <span class="word-count" id="wordCount">0 words</span>
+        <button class="publish-btn" onclick="addPost()">Publish</button>
+      </div>
+    </div>
+
+    <!-- POSTS LIST -->
+    <div class="section-label" id="postsLabel">Latest Stories</div>
+    <div id="posts"></div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">Your Stats</div>
+      <div class="stat-row"><span class="stat-label">Stories Published</span><span class="stat-val" id="statCount">0</span></div>
+      <div class="stat-row"><span class="stat-label">Total Words</span><span class="stat-val" id="statWords">0</span></div>
+      <div class="stat-row"><span class="stat-label">Avg. Length</span><span class="stat-val" id="statAvg">—</span></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">Tips for Writers</div>
+      <p class="sidebar-tip">A great headline stops the scroll. A great opening sentence keeps them reading. Write the second paragraph first — it's usually the real beginning.</p>
+    </div>
+    <div class="sidebar-card dark-card">
+      <div class="sidebar-title gold-title">Quote of the Day</div>
+      <p class="quote-text">"The first draft is just you telling yourself the story."</p>
+      <p class="quote-author">— Terry Pratchett</p>
+    </div>
+  </aside>
+</div>
+
+<div class="toast" id="toast">✓ Story published</div>
+
+<script src="script.js"></script>
+</body>
+</html>
